@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'make -C main'
-                ech00 'Build Stage Successful'
+                echo 'Build Stage Successful'
             }
         }
         stage('Test') {
