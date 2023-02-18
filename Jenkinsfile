@@ -1,27 +1,30 @@
 pipeline {
     agent any
+
     stages {
         stage('Build') {
             steps {
-                sh 'make -C main'
-                echo 'Build Stage Successful'
+                sh 'g++ -c PES1UG20CS355.cpp - error'
+                sh 'g++ -o PES1UG20CS355 PES1UG20CS355.cpp'
+                echo 'Build successful'
             }
         }
         stage('Test') {
             steps {
-                sh '/var/jenkins_home/workspace/PES1UG20CS355-1/main/hello_exec'
-                echo 'Test Stage Successful'
+                sh './PES1UG20CS355'
+                echo 'Test was successful'
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deployed Sucessfully'
+                echo 'Deploy steps successful'
             }
         }
+        
     }
-    post {
-        failure {
-            echo 'Pipeline failed'
-        }
-    }
+    post{
+       failure{
+      echo 'Pipelined failed'
+       }
+    }
 }
